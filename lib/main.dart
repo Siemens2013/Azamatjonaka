@@ -48,10 +48,19 @@ class _mainPageState extends State<mainPage> {
             Container(height: 55,width: 138,color: Colors.blue, child: Center(child: Text("RESERVE 4",
               style: TextStyle(fontSize: 16, color: Colors.white),)),),
             SizedBox(height: 25),
-            Container(height: 55,width: 138,color: Colors.blue, child: Center(child: Text("push",
-              style: TextStyle(fontSize: 16, color: Colors.white),)),),
+            GestureDetector(
+              onTap: (){
+                print('Kuku');
+              },
+              child: Container( height: 55,width: 138,color: Colors.blue, child:
+                Center(child: Text("push",
+                style: TextStyle(fontSize: 16, color: Colors.white),   )),
+
+              ),
+            ),
           ],),
         ),
+
       ),
     );
   }
