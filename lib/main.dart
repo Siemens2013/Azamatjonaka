@@ -28,7 +28,7 @@ class _mainPageState extends State<mainPage> {
         child: Center(
           child: Column(
             children: [
-              Text('This is a main page!', style: TextStyle(fontSize: 24),),
+              Text('This is Azamat!', style: TextStyle(fontSize: 24),),
               SizedBox(height: 24),
               ElevatedButton(onPressed: (){ Navigator.push(
                 context,
