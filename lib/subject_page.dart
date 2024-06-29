@@ -59,12 +59,12 @@ class _SubjectPageState extends State<SubjectPage> {
                 Navigator.push(
                   context,
 
-                  MaterialPageRoute(builder: (context) => const JustForTest(appbartxt: 'just for test, will be deleted soon',)),
+                  MaterialPageRoute(builder: (context) =>  JustForTest(jsonChoice: 'assets/Containers.json',appbartxt: 'just for test, will be deleted soon',)),
                 );
               },
               child: Container( height: 55,width: 138,color: Colors.blue, child:
-              Center(child: Text("push",
-                style: TextStyle(fontSize: 16, color: Colors.white),   )),
+                      Center(child: Text("push",
+                            style: TextStyle(fontSize: 16, color: Colors.white),   )),
               ),
             ),
           ],),
