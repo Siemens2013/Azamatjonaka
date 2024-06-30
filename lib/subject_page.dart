@@ -5,11 +5,15 @@ import 'package:flutter/widgets.dart';
 import 'package:untitled1/Math.dart';
 import 'package:untitled1/JustForTest.dart';
 class SubjectPage extends StatefulWidget {
+
   const SubjectPage({super.key});
   @override
   State<SubjectPage> createState() => _SubjectPageState();
 }
 class _SubjectPageState extends State<SubjectPage> {
+  @override
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
