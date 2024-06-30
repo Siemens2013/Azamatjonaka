@@ -1,7 +1,9 @@
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 class GeneralTest extends StatefulWidget {
   final String appbartxt;
   final String jsonChoice;
@@ -42,20 +44,34 @@ class _GeneralTestState extends State<GeneralTest> {
               child: Row(
                 children: [
 
-                  Container(height: 100,width: 110, color: Colors.white,child: Center(
-                    child: Text(_elements[i]['choices'][0],
+                  GestureDetector(
+                    child: Container(height: 100,width: 110, color: Colors.white,child: Center(
+                      child: Text(_elements[i]['choices'][0],
 
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(fontSize: 28, color: Colors.black),),
-                  ),
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(fontSize: 28, color: Colors.black),),
+                    ),
+                    ),
+                    onTap: (){
+                      setState(() {
+                        i++;
+                      });
+                    },
                   ),
 
                     SizedBox(width: 120),
-                  Container(height: 100,width: 110, color: Colors.white,child: Center(
-                    child: Text(_elements[i]['choices'][1],
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 28, color: Colors.black),),
-                  ),),
+                  GestureDetector(
+                    child: Container(height: 100,width: 110, color: Colors.white,child: Center(
+                      child: Text(_elements[i]['choices'][1],
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 28, color: Colors.black),),
+                    ),),
+                    onTap: (){
+                    setState(() {
+                      i++;
+                    });
+                    },
+                  ),
                 ],
               ),
             ),
@@ -64,17 +80,31 @@ class _GeneralTestState extends State<GeneralTest> {
             child: Row(
               children: [
 
-                Container(height: 100,width: 110, color: Colors.white,child: Center(
-                  child: Text(_elements[i]['choices'][2],
-                                textAlign: TextAlign.center,
-                                style: TextStyle(fontSize: 28, color: Colors.black),),
-                ),),
+                GestureDetector(
+                  child: Container(height: 100,width: 110, color: Colors.white,child: Center(
+                    child: Text(_elements[i]['choices'][2],
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(fontSize: 28, color: Colors.black),),
+                  ),),
+                onTap: (){
+                   setState(() {
+                     i++;
+                   });
+                },
+                ),
                   SizedBox(width: 120),
-                Container(height: 100,width: 110, color: Colors.white,child: Center(
-                  child: Text(_elements[i]['choices'][3],
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 28, color: Colors.black),),
-                ),),
+                GestureDetector(
+                  child: Container(height: 100,width: 110, color: Colors.white,child: Center(
+                    child: Text(_elements[i]['choices'][3],
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 28, color: Colors.black),),
+                  ),),
+                  onTap: (){
+                    setState(() {
+                      i++;
+                    });
+                  },
+                ),
               ],
             ),
           ),
