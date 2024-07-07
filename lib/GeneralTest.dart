@@ -7,6 +7,7 @@ import 'package:flutter/widgets.dart';
 class GeneralTest extends StatefulWidget {
   final String appbartxt;
   final String jsonChoice;
+  //int a,b,c,d;
   const GeneralTest({super.key, required this.jsonChoice, required this.appbartxt});
 
   @override
@@ -15,6 +16,10 @@ class GeneralTest extends StatefulWidget {
 
 class _GeneralTestState extends State<GeneralTest> {
   List _elements=[];
+  int a=0;
+  int b=0;
+  int c=0;
+  int d=0;
     int i=0;
   Future <void> readJason() async {
     final String response = await rootBundle.loadString(widget.jsonChoice);
@@ -52,7 +57,7 @@ class _GeneralTestState extends State<GeneralTest> {
                                       style: TextStyle(fontSize: 28, color: Colors.black),),
                     ),
                     ),
-                    onTap: (){
+                    onTap: (){ a=1; print(a);
                       setState(() {
                         i++;
                       });
@@ -66,7 +71,7 @@ class _GeneralTestState extends State<GeneralTest> {
                         textAlign: TextAlign.center,
                         style: TextStyle(fontSize: 28, color: Colors.black),),
                     ),),
-                    onTap: (){
+                    onTap: (){b=2;print(b);
                     setState(() {
                       i++;
                     });
@@ -86,7 +91,7 @@ class _GeneralTestState extends State<GeneralTest> {
                                   textAlign: TextAlign.center,
                                   style: TextStyle(fontSize: 28, color: Colors.black),),
                   ),),
-                onTap: (){
+                onTap: (){c=3;print(c);
                    setState(() {
                      i++;
                    });
@@ -99,7 +104,7 @@ class _GeneralTestState extends State<GeneralTest> {
                       textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 28, color: Colors.black),),
                   ),),
-                  onTap: (){
+                  onTap: (){d=4;print(d);
                     setState(() {
                       i++;
                     });
