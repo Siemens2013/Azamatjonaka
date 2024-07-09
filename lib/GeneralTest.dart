@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
+
+import 'ResultScreen.dart';
 class GeneralTest extends StatefulWidget {
   final String appbartxt;
   final String jsonChoice;
@@ -26,16 +28,36 @@ class _GeneralTestState extends State<GeneralTest> {
     final data = await json.decode(response);
     setState(() {
       _elements = data["items"];
-      print(i);
+      //print(i+4);
     });
   }
   @override
+  void increment_i(){
+    setState(() {
+      if (_elements.length-1 != i){
+        i++;
+      } else {
+        Navigator.push(
+          context,
+
+          MaterialPageRoute(builder: (context) =>  ResultScreen()),
+        );
+      }
+
+    }
+    );
+  }
   void initState() {
     readJason();
     super.initState();
   }
   @override
   Widget build(BuildContext context) {
+
+    if (_elements.isEmpty) {
+      return Container();
+    }
+
     return Scaffold( appBar: AppBar(title: Text(widget.appbartxt, style: TextStyle(color: Colors.white)
       ,), centerTitle: true, backgroundColor: Colors.blue,),
       backgroundColor: Colors.white60,
@@ -59,7 +81,7 @@ class _GeneralTestState extends State<GeneralTest> {
                     ),
                     onTap: (){ a=1; print(a);
                       setState(() {
-                        i++;
+                        increment_i();
                       });
                     },
                   ),
@@ -73,7 +95,7 @@ class _GeneralTestState extends State<GeneralTest> {
                     ),),
                     onTap: (){b=2;print(b);
                     setState(() {
-                      i++;
+                      increment_i();
                     });
                     },
                   ),
@@ -93,7 +115,7 @@ class _GeneralTestState extends State<GeneralTest> {
                   ),),
                 onTap: (){c=3;print(c);
                    setState(() {
-                     i++;
+                     increment_i();
                    });
                 },
                 ),
@@ -105,9 +127,7 @@ class _GeneralTestState extends State<GeneralTest> {
                       style: TextStyle(fontSize: 28, color: Colors.black),),
                   ),),
                   onTap: (){d=4;print(d);
-                    setState(() {
-                      i++;
-                    });
+                      increment_i();
                   },
                 ),
               ],
@@ -118,3 +138,4 @@ class _GeneralTestState extends State<GeneralTest> {
     );
   }
 }
+
