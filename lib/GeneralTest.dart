@@ -19,8 +19,8 @@ class GeneralTest extends StatefulWidget {
 class _GeneralTestState extends State<GeneralTest> {
   List _elements=[];
   int a=0;
-  int b=0;
-  int c=0;
+  int good=0;
+  int bad=0;
   int d=0;
     int i=0;
   Future <void> readJason() async {
@@ -34,14 +34,19 @@ class _GeneralTestState extends State<GeneralTest> {
   @override
   void increment_i(){
     setState(() {
-      if (_elements.length-1 != i){
-        i++;
-      } else {
-        Navigator.push(
-          context,
+      if (_elements.length-1 == i){
+        if (a==_elements[i] ['correctChoice']){good++;} else {bad++;}
 
-          MaterialPageRoute(builder: (context) =>  ResultScreen()),
-        );
+        Navigator.push(
+        context,
+
+        MaterialPageRoute(builder: (context) =>  ResultScreen(good: good,bad: bad)),
+      );
+
+      } else {if (a==_elements[i] ['correctChoice']){good++;} else {bad++;}
+      print(_elements.length);print('  i      $i');
+      i++;
+
       }
 
     }
@@ -54,7 +59,7 @@ class _GeneralTestState extends State<GeneralTest> {
   @override
   Widget build(BuildContext context) {
 
-    if (_elements.isEmpty) {
+    if (_elements.isEmpty ) {
       return Container();
     }
 
@@ -79,7 +84,7 @@ class _GeneralTestState extends State<GeneralTest> {
                                       style: TextStyle(fontSize: 28, color: Colors.black),),
                     ),
                     ),
-                    onTap: (){ a=1; print(a);
+                    onTap: (){ a=0;
                       setState(() {
                         increment_i();
                       });
@@ -93,7 +98,7 @@ class _GeneralTestState extends State<GeneralTest> {
                         textAlign: TextAlign.center,
                         style: TextStyle(fontSize: 28, color: Colors.black),),
                     ),),
-                    onTap: (){b=2;print(b);
+                    onTap: (){a=1;
                     setState(() {
                       increment_i();
                     });
@@ -113,7 +118,7 @@ class _GeneralTestState extends State<GeneralTest> {
                                   textAlign: TextAlign.center,
                                   style: TextStyle(fontSize: 28, color: Colors.black),),
                   ),),
-                onTap: (){c=3;print(c);
+                onTap: (){a=2;
                    setState(() {
                      increment_i();
                    });
@@ -126,7 +131,7 @@ class _GeneralTestState extends State<GeneralTest> {
                       textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 28, color: Colors.black),),
                   ),),
-                  onTap: (){d=4;print(d);
+                  onTap: (){a=3;
                       increment_i();
                   },
                 ),
