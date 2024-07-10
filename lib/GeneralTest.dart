@@ -31,24 +31,20 @@ class _GeneralTestState extends State<GeneralTest> {
       //print(i+4);
     });
   }
+  Color _myContainerColor=Colors.white60;
   @override
   void increment_i(){
     setState(() {
       if (_elements.length-1 == i){
         if (a==_elements[i] ['correctChoice']){good++;} else {bad++;}
-
         Navigator.push(
         context,
-
         MaterialPageRoute(builder: (context) =>  ResultScreen(good: good,bad: bad)),
       );
-
       } else {if (a==_elements[i] ['correctChoice']){good++;} else {bad++;}
       print(_elements.length);print('  i      $i');
       i++;
-
       }
-
     }
     );
   }
@@ -77,14 +73,14 @@ class _GeneralTestState extends State<GeneralTest> {
                 children: [
 
                   GestureDetector(
-                    child: Container(height: 100,width: 110, color: Colors.white,child: Center(
+                    child: Container(height: 100,width: 110, color: _myContainerColor,child: Center(
                       child: Text(_elements[i]['choices'][0],
 
                                       textAlign: TextAlign.center,
                                       style: TextStyle(fontSize: 28, color: Colors.black),),
                     ),
                     ),
-                    onTap: (){ a=0;
+                    onTap: (){ a=0; 
                       setState(() {
                         increment_i();
                       });
@@ -93,7 +89,7 @@ class _GeneralTestState extends State<GeneralTest> {
 
                     SizedBox(width: 120),
                   GestureDetector(
-                    child: Container(height: 100,width: 110, color: Colors.white,child: Center(
+                    child: Container(height: 100,width: 110, color: _myContainerColor,child: Center(
                       child: Text(_elements[i]['choices'][1],
                         textAlign: TextAlign.center,
                         style: TextStyle(fontSize: 28, color: Colors.black),),
@@ -113,7 +109,7 @@ class _GeneralTestState extends State<GeneralTest> {
               children: [
 
                 GestureDetector(
-                  child: Container(height: 100,width: 110, color: Colors.white,child: Center(
+                  child: Container(height: 100,width: 110, color: _myContainerColor,child: Center(
                     child: Text(_elements[i]['choices'][2],
                                   textAlign: TextAlign.center,
                                   style: TextStyle(fontSize: 28, color: Colors.black),),
@@ -126,7 +122,7 @@ class _GeneralTestState extends State<GeneralTest> {
                 ),
                   SizedBox(width: 120),
                 GestureDetector(
-                  child: Container(height: 100,width: 110, color: Colors.white,child: Center(
+                  child: Container(height: 100,width: 110, color: _myContainerColor,child: Center(
                     child: Text(_elements[i]['choices'][3],
                       textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 28, color: Colors.black),),

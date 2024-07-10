@@ -22,8 +22,8 @@ class _MainSubjectPageState extends State<MainSubjectPage> {
     final String response = await rootBundle.loadString(widget.jsonChoice);
     final data = await json.decode(response);
     setState(() {
-      _elements=data["items"];  print(i);
-      print(_elements);
+      _elements=data["items"];
+
     });
   }
 
