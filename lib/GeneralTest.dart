@@ -21,8 +21,8 @@ class _GeneralTestState extends State<GeneralTest> {
   int a=0;
   int good=0;
   int bad=0;
-  int d=0;
-    int i=0;
+  int i=0;
+  bool _isPressed=false;
   Future <void> readJason() async {
     final String response = await rootBundle.loadString(widget.jsonChoice);
     final data = await json.decode(response);
@@ -31,7 +31,11 @@ class _GeneralTestState extends State<GeneralTest> {
       //print(i+4);
     });
   }
-  Color _myContainerColor=Colors.white60;
+  Color _myContainerColor0=Colors.white60;
+  Color _myContainerColor1=Colors.white60;
+  Color _myContainerColor2=Colors.white60;
+  Color _myContainerColor3=Colors.white60;
+
   @override
   void increment_i(){
     setState(() {
@@ -41,9 +45,30 @@ class _GeneralTestState extends State<GeneralTest> {
         context,
         MaterialPageRoute(builder: (context) =>  ResultScreen(good: good,bad: bad)),
       );
-      } else {if (a==_elements[i] ['correctChoice']){good++;} else {bad++;}
-      print(_elements.length);print('  i      $i');
-      i++;
+      } else {if (a==_elements[i] ['correctChoice']){
+
+                      if (a==0) {_myContainerColor0=Colors.green;_myContainerColor1=Colors.red;_myContainerColor2=Colors.red;_myContainerColor3=Colors.red;}
+                          else {if (a==1) {_myContainerColor0=Colors.red;_myContainerColor1=Colors.green;_myContainerColor2=Colors.red;_myContainerColor3=Colors.red;}}
+                                if (a==2){_myContainerColor0=Colors.red;_myContainerColor1=Colors.red;_myContainerColor2=Colors.green;_myContainerColor3=Colors.red;}
+                                    else {if (a==3){_myContainerColor0=Colors.red;_myContainerColor1=Colors.red;_myContainerColor2=Colors.red;_myContainerColor3=Colors.green;}}
+
+                      good++; _isPressed=true;} else {
+                                    if (a==0) {_myContainerColor0=Colors.red;}
+                                    if (a==1){_myContainerColor1=Colors.red;}
+                                    if (a==2) {_myContainerColor2=Colors.red;}
+                                    if (a==3){_myContainerColor3=Colors.red;}
+                                      bad++; _isPressed=false;}
+      if (_isPressed==true) {
+        Future.delayed(const Duration(milliseconds: 3300), () {
+          setState(() {
+            i++;
+            _myContainerColor0 = Colors.white60;
+            _myContainerColor1 = Colors.white60;
+            _myContainerColor2 = Colors.white60;
+            _myContainerColor3 = Colors.white60;
+          });
+        });
+      }
       }
     }
     );
@@ -73,14 +98,14 @@ class _GeneralTestState extends State<GeneralTest> {
                 children: [
 
                   GestureDetector(
-                    child: Container(height: 100,width: 110, color: _myContainerColor,child: Center(
+                    child: Container(height: 100,width: 110, color: _myContainerColor0,child: Center(
                       child: Text(_elements[i]['choices'][0],
 
                                       textAlign: TextAlign.center,
                                       style: TextStyle(fontSize: 28, color: Colors.black),),
                     ),
                     ),
-                    onTap: (){ a=0; 
+                    onTap: (){ a=0;
                       setState(() {
                         increment_i();
                       });
@@ -89,7 +114,7 @@ class _GeneralTestState extends State<GeneralTest> {
 
                     SizedBox(width: 120),
                   GestureDetector(
-                    child: Container(height: 100,width: 110, color: _myContainerColor,child: Center(
+                    child: Container(height: 100,width: 110, color: _myContainerColor1,child: Center(
                       child: Text(_elements[i]['choices'][1],
                         textAlign: TextAlign.center,
                         style: TextStyle(fontSize: 28, color: Colors.black),),
@@ -109,7 +134,7 @@ class _GeneralTestState extends State<GeneralTest> {
               children: [
 
                 GestureDetector(
-                  child: Container(height: 100,width: 110, color: _myContainerColor,child: Center(
+                  child: Container(height: 100,width: 110, color: _myContainerColor2,child: Center(
                     child: Text(_elements[i]['choices'][2],
                                   textAlign: TextAlign.center,
                                   style: TextStyle(fontSize: 28, color: Colors.black),),
@@ -122,7 +147,7 @@ class _GeneralTestState extends State<GeneralTest> {
                 ),
                   SizedBox(width: 120),
                 GestureDetector(
-                  child: Container(height: 100,width: 110, color: _myContainerColor,child: Center(
+                  child: Container(height: 100,width: 110, color: _myContainerColor3,child: Center(
                     child: Text(_elements[i]['choices'][3],
                       textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 28, color: Colors.black),),
