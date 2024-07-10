@@ -1,17 +1,13 @@
 import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-
 import 'ResultScreen.dart';
 class GeneralTest extends StatefulWidget {
   final String appbartxt;
   final String jsonChoice;
-  //int a,b,c,d;
   const GeneralTest({super.key, required this.jsonChoice, required this.appbartxt});
-
   @override
   State<GeneralTest> createState() => _GeneralTestState();
 }
@@ -59,7 +55,7 @@ class _GeneralTestState extends State<GeneralTest> {
                                     if (a==3){_myContainerColor3=Colors.red;}
                                       bad++; _isPressed=false;}
       if (_isPressed==true) {
-        Future.delayed(const Duration(milliseconds: 3300), () {
+        Future.delayed(const Duration(milliseconds: 2000), () {
           setState(() {
             i++;
             _myContainerColor0 = Colors.white60;
@@ -90,8 +86,11 @@ class _GeneralTestState extends State<GeneralTest> {
       body: Center(
         child: Column(children: [SizedBox(height: 25),
           Container(height: 200,width: 355, color: Colors.blue,
-            child: Center(child: Text(_elements[i]['title'],style: TextStyle(fontSize: 28,
-            color: Colors.white),)),),
+            child: Center(child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(_elements[i]['title'],style: TextStyle(fontSize: 28,
+              color: Colors.white),),
+            )),),
             Padding(
               padding: const EdgeInsets.all(34.0),
               child: Row(
@@ -99,10 +98,13 @@ class _GeneralTestState extends State<GeneralTest> {
 
                   GestureDetector(
                     child: Container(height: 100,width: 110, color: _myContainerColor0,child: Center(
-                      child: Text(_elements[i]['choices'][0],
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(_elements[i]['choices'][0],
 
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(fontSize: 28, color: Colors.black),),
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(fontSize: 28, color: Colors.black),),
+                      ),
                     ),
                     ),
                     onTap: (){ a=0;
@@ -115,9 +117,12 @@ class _GeneralTestState extends State<GeneralTest> {
                     SizedBox(width: 120),
                   GestureDetector(
                     child: Container(height: 100,width: 110, color: _myContainerColor1,child: Center(
-                      child: Text(_elements[i]['choices'][1],
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 28, color: Colors.black),),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(_elements[i]['choices'][1],
+                          textAlign: TextAlign.center,
+                          style: TextStyle(fontSize: 28, color: Colors.black),),
+                      ),
                     ),),
                     onTap: (){a=1;
                     setState(() {
@@ -135,9 +140,12 @@ class _GeneralTestState extends State<GeneralTest> {
 
                 GestureDetector(
                   child: Container(height: 100,width: 110, color: _myContainerColor2,child: Center(
-                    child: Text(_elements[i]['choices'][2],
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(fontSize: 28, color: Colors.black),),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(_elements[i]['choices'][2],
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(fontSize: 28, color: Colors.black),),
+                    ),
                   ),),
                 onTap: (){a=2;
                    setState(() {
@@ -148,9 +156,12 @@ class _GeneralTestState extends State<GeneralTest> {
                   SizedBox(width: 120),
                 GestureDetector(
                   child: Container(height: 100,width: 110, color: _myContainerColor3,child: Center(
-                    child: Text(_elements[i]['choices'][3],
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 28, color: Colors.black),),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(_elements[i]['choices'][3],
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 28, color: Colors.black),),
+                    ),
                   ),),
                   onTap: (){a=3;
                       increment_i();
