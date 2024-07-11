@@ -13,8 +13,8 @@ import 'package:untitled1/Learning.dart';
 void main()=>runApp( MaterialApp(
   home:
       //GeneralTest(),
-  //MainSubjectPage(appbartxt: 'CHOOSE THE SUBJECT',jsonChoice: 'assets/Containers.json',),
+  MainSubjectPage(appbartxt: 'CHOOSE THE SUBJECT',jsonChoice: 'assets/Containers.json',),
   //SubjectPage(),
-  Learning(),
+  //Learning(),
 ),
 );

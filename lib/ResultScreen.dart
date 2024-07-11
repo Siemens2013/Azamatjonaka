@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ResultScreen extends StatefulWidget {
-  final int good;
-  final int bad;
-  const ResultScreen({super.key, required this.bad, required this.good});
+
+  const ResultScreen({super.key});
 
   @override
   State<ResultScreen> createState() => _ResultScreenState();
@@ -20,9 +19,9 @@ class _ResultScreenState extends State<ResultScreen> {
     body: Center(
       child: Column(
         children: [SizedBox(height: 55),
-          Text('GOOD     ${widget.good}', style: TextStyle(fontSize: 32),),
+          Text(' I AM HAPPY', style: TextStyle(fontSize: 32),),
           SizedBox(height: 25),
-          Text('BAD      ${widget.bad}', style: TextStyle(fontSize: 32),)
+          Text('YOU DID GREAT  JOB !!!', style: TextStyle(fontSize: 32),)
         ],
       ),
     ),

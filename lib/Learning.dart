@@ -36,7 +36,8 @@ class _LearningState extends State<Learning> {
                     Colors.white;
                     //final player=AudioCache();
                 final player = AudioPlayer();
-                 player.play(AssetSource('assets/correct-156911.mp3'));
+                 player.play(AssetSource('correct-156911.mp3'));
+
                   
 
 
