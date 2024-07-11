@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 import 'GeneralTest.dart';
 class Learning extends StatefulWidget {
@@ -9,6 +10,7 @@ class Learning extends StatefulWidget {
 }
 
 class _LearningState extends State<Learning> {
+  final player = AudioCache();
   Color _containerColor=Colors.grey;
   Color _textColor=Colors.black;
   @override
@@ -32,18 +34,26 @@ class _LearningState extends State<Learning> {
                 _textColor=_containerColor==Colors.red ?
                     Colors.black:
                     Colors.white;
-                Future.delayed(const Duration(milliseconds: 3300), (){
+                    //final player=AudioCache();
+                final player = AudioPlayer();
+                 player.play(AssetSource('assets/correct-156911.mp3'));
+                  
 
-                  setState(() {
-                    Navigator.push(
-                      context,
 
-                      MaterialPageRoute(builder: (context) =>  GeneralTest(jsonChoice: 'assets/Math.json',
-                        appbartxt: 'MATEMATIKA1',)),
-                    );
-                  });
-                }
-                );
+
+
+                //Future.delayed(const Duration(milliseconds: 3300), (){
+
+              //    setState(() {
+            //        Navigator.push(
+                    //  context,
+
+                  //    MaterialPageRoute(builder: (context) =>  GeneralTest(jsonChoice: 'assets/Math.json',
+                //        appbartxt: 'MATEMATIKA1',)),
+                    //);
+                  //});
+                //}
+               // );
               });
             },
           ),
