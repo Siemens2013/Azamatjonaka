@@ -16,8 +16,8 @@ class GeneralTest extends StatefulWidget {
 class _GeneralTestState extends State<GeneralTest> {
   List _elements=[];
   int a=0;
-
   int i=0;
+  int b=0;
   bool _isPressed=false;
   Future <void> readJason() async {
     final String response = await rootBundle.loadString(widget.jsonChoice);
@@ -76,15 +76,19 @@ class _GeneralTestState extends State<GeneralTest> {
                                     final player = AudioPlayer();
                                     player.play(AssetSource('error-10-206498.mp3'));
                                                             }
-      if (_isPressed==true) {
+      if (_isPressed==true) {print('PRESSED before delay  $i'+' times');b=i;
         Future.delayed(const Duration(milliseconds: 2000), () {
-          setState(() {
-            i++;
-            _myContainerColor0 = Colors.white60;
-            _myContainerColor1 = Colors.white60;
-            _myContainerColor2 = Colors.white60;
-            _myContainerColor3 = Colors.white60;
-          });
+         if (b==i) {
+           setState(() {
+             i++;
+             print('PRESSED on if  $i'+' times');
+             _myContainerColor0 = Colors.white60;
+             _myContainerColor1 = Colors.white60;
+             _myContainerColor2 = Colors.white60;
+             _myContainerColor3 = Colors.white60;
+           });
+         }
+
         });
       }
       }
@@ -130,10 +134,11 @@ class _GeneralTestState extends State<GeneralTest> {
                     ),
                     ),
                     onTap: (){ a=0;
-                      setState(() {
+                      setState(() { print('PRESSED  $i'+' times');
                         increment_i();
                       });
                     },
+
                   ),
 
                     SizedBox(width: 120),
@@ -147,7 +152,7 @@ class _GeneralTestState extends State<GeneralTest> {
                       ),
                     ),),
                     onTap: (){a=1;
-                    setState(() {
+                    setState(() { print('PRESSED  $i'+' times');
                       increment_i();
                     });
                     },
@@ -169,7 +174,7 @@ class _GeneralTestState extends State<GeneralTest> {
                                     style: TextStyle(fontSize: 28, color: Colors.black),),
                     ),
                   ),),
-                onTap: (){a=2;
+                onTap: (){a=2; print('PRESSED  $i'+' times');
                    setState(() {
                      increment_i();
                    });
@@ -185,7 +190,7 @@ class _GeneralTestState extends State<GeneralTest> {
                         style: TextStyle(fontSize: 28, color: Colors.black),),
                     ),
                   ),),
-                  onTap: (){a=3;
+                  onTap: (){a=3;   print('PRESSED  $i'+' times');
                       increment_i();
                   },
                 ),
