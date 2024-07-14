@@ -35,7 +35,7 @@ class _GeneralTestState extends State<GeneralTest> {
   @override
   void increment_i(){
     setState(() {
-      if (_elements.length- 9== i){
+      if (_elements.length- 1== i){
         if (a==_elements[i] ['correctChoice']){if (a==0) {_myContainerColor0=Colors.green;_myContainerColor1=Colors.red;_myContainerColor2=Colors.red;_myContainerColor3=Colors.red;}
         else {if (a==1) {_myContainerColor0=Colors.red;_myContainerColor1=Colors.green;_myContainerColor2=Colors.red;_myContainerColor3=Colors.red;}}
         if (a==2){_myContainerColor0=Colors.red;_myContainerColor1=Colors.red;_myContainerColor2=Colors.green;_myContainerColor3=Colors.red;}
@@ -52,12 +52,17 @@ class _GeneralTestState extends State<GeneralTest> {
         player.play(AssetSource('error-10-206498.mp3'));}
 
         if(_isPressed==true){
+          Future.delayed(const  Duration(milliseconds: 3000),() {
 
-        Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) =>  ResultScreen()),
+            Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) =>  ResultScreen()),
 
-      );}
+          );
+          }
+          );
+
+        }
       } else {if (a==_elements[i] ['correctChoice']){
 
                       if (a==0) {_myContainerColor0=Colors.green;_myContainerColor1=Colors.red;_myContainerColor2=Colors.red;_myContainerColor3=Colors.red;}
