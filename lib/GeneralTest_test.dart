@@ -5,15 +5,15 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'ResultScreen.dart';
 import 'package:audioplayers/audioplayers.dart';
-class GeneralTest extends StatefulWidget {
+class GeneralTest_test extends StatefulWidget {
   final String appbartxt;
   final String jsonChoice;
-  const GeneralTest({super.key, required this.jsonChoice, required this.appbartxt});
+  const GeneralTest_test({super.key, required this.jsonChoice, required this.appbartxt});
   @override
-  State<GeneralTest> createState() => _GeneralTestState();
+  State<GeneralTest_test> createState() => _GeneralTest_testState();
 }
 
-class _GeneralTestState extends State<GeneralTest> {
+class _GeneralTest_testState extends State<GeneralTest_test> {
   List _elements=[];
   int a=0;
 
@@ -24,7 +24,6 @@ class _GeneralTestState extends State<GeneralTest> {
     final data = await json.decode(response);
     setState(() {
       _elements = data["items"];
-      //print(i+4);
     });
   }
   Color _myContainerColor0=Colors.white60;
@@ -32,10 +31,32 @@ class _GeneralTestState extends State<GeneralTest> {
   Color _myContainerColor2=Colors.white60;
   Color _myContainerColor3=Colors.white60;
   final player = AudioCache();
-  @override
+
+ Widget customButton(Color containerColor,int aValue){
+   return GestureDetector(
+     child: Container(height: 100,width: 110, color: containerColor,child: Center(
+       child: Padding(
+         padding: const EdgeInsets.all(8.0),
+         child: Text(_elements[i]['choices'][aValue],
+
+           textAlign: TextAlign.center,
+           style: TextStyle(fontSize: 28, color: Colors.black),),
+       ),
+     ),
+
+     ),
+     onTap: (){ a=aValue;
+     setState(() {
+       increment_i();
+     });
+     },
+   );
+
+ }
+
   void increment_i(){
     setState(() {
-      if (_elements.length- 9== i){
+      if (_elements.length- 1== i){
         if (a==_elements[i] ['correctChoice']){if (a==0) {_myContainerColor0=Colors.green;_myContainerColor1=Colors.red;_myContainerColor2=Colors.red;_myContainerColor3=Colors.red;}
         else {if (a==1) {_myContainerColor0=Colors.red;_myContainerColor1=Colors.green;_myContainerColor2=Colors.red;_myContainerColor3=Colors.red;}}
         if (a==2){_myContainerColor0=Colors.red;_myContainerColor1=Colors.red;_myContainerColor2=Colors.green;_myContainerColor3=Colors.red;}
@@ -76,21 +97,23 @@ class _GeneralTestState extends State<GeneralTest> {
                                     final player = AudioPlayer();
                                     player.play(AssetSource('error-10-206498.mp3'));
                                                             }
-      if (_isPressed==true) {
+      if (_isPressed==true) {print('hhhhhhhhhh    $i');
         Future.delayed(const Duration(milliseconds: 2000), () {
           setState(() {
-            i++;
             _myContainerColor0 = Colors.white60;
             _myContainerColor1 = Colors.white60;
             _myContainerColor2 = Colors.white60;
             _myContainerColor3 = Colors.white60;
+            //i++;
           });
         });
+        i++;
       }
       }
     }
     );
   }
+  @override
   void initState() {
     readJason();
     super.initState();
@@ -117,41 +140,9 @@ class _GeneralTestState extends State<GeneralTest> {
               padding: const EdgeInsets.all(34.0),
               child: Row(
                 children: [
-
-                  GestureDetector(
-                    child: Container(height: 100,width: 110, color: _myContainerColor0,child: Center(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(_elements[i]['choices'][0],
-
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(fontSize: 28, color: Colors.black),),
-                      ),
-                    ),
-                    ),
-                    onTap: (){ a=0;
-                      setState(() {
-                        increment_i();
-                      });
-                    },
-                  ),
-
-                    SizedBox(width: 120),
-                  GestureDetector(
-                    child: Container(height: 100,width: 110, color: _myContainerColor1,child: Center(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(_elements[i]['choices'][1],
-                          textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 28, color: Colors.black),),
-                      ),
-                    ),),
-                    onTap: (){a=1;
-                    setState(() {
-                      increment_i();
-                    });
-                    },
-                  ),
+                  customButton(_myContainerColor0, 0),
+                  SizedBox(width: 120),
+                  customButton(_myContainerColor1, 1),
                 ],
               ),
             ),
@@ -159,36 +150,9 @@ class _GeneralTestState extends State<GeneralTest> {
             padding: const EdgeInsets.all(32.0),
             child: Row(
               children: [
-
-                GestureDetector(
-                  child: Container(height: 100,width: 110, color: _myContainerColor2,child: Center(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(_elements[i]['choices'][2],
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(fontSize: 28, color: Colors.black),),
-                    ),
-                  ),),
-                onTap: (){a=2;
-                   setState(() {
-                     increment_i();
-                   });
-                },
-                ),
-                  SizedBox(width: 120),
-                GestureDetector(
-                  child: Container(height: 100,width: 110, color: _myContainerColor3,child: Center(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(_elements[i]['choices'][3],
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 28, color: Colors.black),),
-                    ),
-                  ),),
-                  onTap: (){a=3;
-                      increment_i();
-                  },
-                ),
+                customButton(_myContainerColor2,2),
+                SizedBox(width: 120),
+                customButton(_myContainerColor3, 3)
               ],
             ),
           ),

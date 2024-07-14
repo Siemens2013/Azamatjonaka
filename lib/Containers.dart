@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:untitled1/GeneralTest.dart';
+
+import 'GeneralTest_test.dart';
 class MyContains extends StatelessWidget {
   final String child;
   final int uzunlik;
@@ -21,14 +23,14 @@ class MyContains extends StatelessWidget {
               Navigator.push(
                 context,
 
-                MaterialPageRoute(builder: (context) =>  GeneralTest(jsonChoice: 'assets/Math.json',
+                MaterialPageRoute(builder: (context) =>  GeneralTest_test(jsonChoice: 'assets/Math.json',
                   appbartxt: 'MATEMATIKA1',)),
               );
             }
             else if (uzunlik==1) {
               Navigator.push(
                   context,
-              MaterialPageRoute(builder: (context) =>  GeneralTest(jsonChoice: 'assets/toshkent.json',
+              MaterialPageRoute(builder: (context) =>  GeneralTest_test(jsonChoice: 'assets/toshkent.json',
                 appbartxt: 'HISTORY',)),
               );
             }
